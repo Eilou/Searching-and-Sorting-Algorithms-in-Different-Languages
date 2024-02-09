@@ -184,7 +184,7 @@ public class Sorts {
     }
 
     /**
-     * Test case for differnet sorting algorithms
+     * Test case for different sorting algorithms
      *
      * @param args Arguments to be passed by the input stream
      */
