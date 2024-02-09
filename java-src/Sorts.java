@@ -1,5 +1,6 @@
 /**
  * Java sorting algorithms
+ *
  * @author Louie Brooks
  * Written on: starting 07/02/24
  */
@@ -8,10 +9,11 @@ public class Sorts {
 
     /**
      * Runs bubble sort on array of integers
+     *
      * @param data
      * @return Ascending sorted array
      */
-    public static int[] bubble (int[] data){
+    public static int[] bubble(int[] data) {
 
         // inter-pass loops
         for (int i = 0; i < data.length - 1; i++) {
@@ -22,11 +24,11 @@ public class Sorts {
             for (int j = 1; j <= data.length - 1 - i; j++) {
 
                 // swap if needed
-                if (data[j] < data[j-1]) {
+                if (data[j] < data[j - 1]) {
 
                     int temp = data[j];
-                    data[j] = data[j-1];
-                    data[j-1] = temp;
+                    data[j] = data[j - 1];
+                    data[j - 1] = temp;
                     swapped = true;
 
                 }
@@ -44,45 +46,83 @@ public class Sorts {
 
     /**
      * Runs merge sort on integer array
+     *
      * @param data
      * @return Ascending sorted array
      */
-    public static int[] merge (int[] data){
+    public static int[] merge(int[] data, int start, int end) {
 
-
-        if (data.length > 1) {
-            // partition left
-            System.out.println(printArrContents(data));
-            int[] leftArray = new int[(int) Math.floor(data.length / 2.0)];
-            System.arraycopy(data, 0, leftArray, 0, leftArray.length);
-            merge(leftArray);
-            // partition right
-            int[] rightArray = new int[(int) Math.ceil(data.length / 2.0)];
-            System.arraycopy(data, (int) Math.ceil(data.length / 2.0), rightArray, 0, rightArray.length-1);
-            merge(leftArray);
+        // recursively partition until each list is 1 element long
+        if (start == end) {
+            int[] singleElement = new int[1];
+            singleElement[0] = data[start];
+            return singleElement;
         }
 
+        // split list into 2
+        int mid = (int) Math.floor((start + end) / 2.0);
+        int[] leftArr = merge(data, 0, mid);
+        int[] rightArr = merge(data, mid + 1, end);
 
+        return merge2Lists(leftArr, rightArr);
 
+    }
 
-        return data;
+    public static int[] merge2Lists(int[] arr1, int[] arr2) {
+
+        int pointer1 = 0;
+        int pointer2 = 0;
+        int pointerMerged = 0;
+
+        int[] mergedArray = new int[arr1.length + arr2.length];
+
+        while (pointer1 < arr1.length && pointer2 < arr2.length) {
+
+            if (arr1[pointer1] > arr2[pointer2]) {
+                mergedArray[pointerMerged] = arr2[pointer2];
+                pointer2++;
+                pointerMerged++;
+            }
+
+            else {
+                mergedArray[pointerMerged] = arr1[pointer1];
+                pointer1++;
+                pointerMerged++;
+            }
+        }
+
+        while (pointer1 < arr1.length) {
+            mergedArray[pointerMerged] = arr1[pointer1];
+            pointer1++;
+            pointerMerged++;
+        }
+
+        while (pointer2 < arr2.length) {
+            mergedArray[pointerMerged] = arr2[pointer2];
+            pointer2++;
+            pointerMerged++;
+        }
+
+        return mergedArray;
+
     }
 
     /**
      * Runs insertion sort on integer array
+     *
      * @param data
      * @return Ascending sorted array
      */
-    public static int[] insertion (int[] data){
+    public static int[] insertion(int[] data) {
 
         for (int j = 1; j < data.length; j++) {
             int key = data[j];
             int i = j - 1;
             while (i >= 0 && data[i] > key) {
-                data[i+1] = data[i];
+                data[i + 1] = data[i];
                 i = i - 1;
             }
-            data[i+1] = key;
+            data[i + 1] = key;
         }
 
         return data;
@@ -90,10 +130,11 @@ public class Sorts {
 
     /**
      * Runs selection sort on integer array
+     *
      * @param data
      * @return Ascending sorted array
      */
-    public static int[] selection (int[] data){
+    public static int[] selection(int[] data) {
 
         for (int lastUnsorted = data.length - 1; lastUnsorted > 0; lastUnsorted--) {
 
@@ -102,7 +143,7 @@ public class Sorts {
             for (int i = 0; i < lastUnsorted; i++) {
 
                 if (data[i] > data[positionOfLargest]) {
-                        positionOfLargest = i;
+                    positionOfLargest = i;
                 }
 
             }
@@ -120,6 +161,7 @@ public class Sorts {
 
     /**
      * Outputs the elements of an array as a string
+     *
      * @param arr
      * @return Elements of array as a string
      */
@@ -136,16 +178,17 @@ public class Sorts {
 
     /**
      * Test case for differnet sorting algorithms
+     *
      * @param args
      */
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
-        int[] testData = {9,8,7,6,5,4,3,2,1};
+        int[] testData = {9, 8, 7, 6, 5, 4, 3, 2, 1};
 
         System.out.print("Bubble Sort: ");
         System.out.println(Sorts.printArrContents(Sorts.bubble(testData)));
         System.out.print("Merge Sort: ");
-        System.out.println(Sorts.merge(testData));
+        System.out.println(Sorts.printArrContents(Sorts.merge(testData, 0, testData.length - 1)));
         System.out.print("Insertion Sort: ");
         System.out.println(Sorts.printArrContents(Sorts.insertion(testData)));
         System.out.print("Selection Sort: ");
