@@ -38,6 +38,16 @@ public class Sorts {
 
     public static int[] insertion (int[] data){
 
+        for (int j = 1; j < data.length; j++) {
+            int key = data[j];
+            int i = j - 1;
+            while (i >= 0 && data[i] > key) {
+                data[i+1] = data[i];
+                i = i - 1;
+            }
+            data[i+1] = key;
+        }
+
         return data;
     }
 
@@ -81,9 +91,9 @@ public class Sorts {
 
         int[] testData = {9,8,7,6,5,4,3,2,1};
 
-        System.out.println(Sorts.printArrContents(Sorts.bubble(testData)));
+//        System.out.println(Sorts.printArrContents(Sorts.bubble(testData)));
 //        System.out.println(Sorts.merge(testData));
-//        System.out.println(Sorts.insertion(testData));
+        System.out.println(Sorts.printArrContents(Sorts.insertion(testData)));
 //        System.out.println(Sorts.printArrContents(Sorts.selection(testData)));
 
     }
