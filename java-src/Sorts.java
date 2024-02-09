@@ -10,7 +10,7 @@ public class Sorts {
     /**
      * Runs bubble sort on array of integers
      *
-     * @param data
+     * @param data Unsorted integer array
      * @return Ascending sorted array
      */
     public static int[] bubble(int[] data) {
@@ -47,7 +47,9 @@ public class Sorts {
     /**
      * Runs merge sort on integer array
      *
-     * @param data
+     * @param data  Unsorted integer array
+     * @param start First position of the array
+     * @param end Last position of the array
      * @return Ascending sorted array
      */
     public static int[] merge(int[] data, int start, int end) {
@@ -61,13 +63,20 @@ public class Sorts {
 
         // split list into 2
         int mid = (int) Math.floor((start + end) / 2.0);
-        int[] leftArr = merge(data, 0, mid);
+        int[] leftArr = merge(data, start, mid);
         int[] rightArr = merge(data, mid + 1, end);
 
         return merge2Lists(leftArr, rightArr);
 
     }
 
+    /**
+     * Merges two sorted lists into one sorted list
+     *
+     * @param arr1 Ascending sorted array
+     * @param arr2 Ascending sorted array
+     * @return Combined ascending sorted list with elements from both parameters
+     */
     public static int[] merge2Lists(int[] arr1, int[] arr2) {
 
         int pointer1 = 0;
@@ -82,9 +91,7 @@ public class Sorts {
                 mergedArray[pointerMerged] = arr2[pointer2];
                 pointer2++;
                 pointerMerged++;
-            }
-
-            else {
+            } else {
                 mergedArray[pointerMerged] = arr1[pointer1];
                 pointer1++;
                 pointerMerged++;
@@ -110,7 +117,7 @@ public class Sorts {
     /**
      * Runs insertion sort on integer array
      *
-     * @param data
+     * @param data Unsorted integer array
      * @return Ascending sorted array
      */
     public static int[] insertion(int[] data) {
@@ -131,7 +138,7 @@ public class Sorts {
     /**
      * Runs selection sort on integer array
      *
-     * @param data
+     * @param data Unsorted integer array
      * @return Ascending sorted array
      */
     public static int[] selection(int[] data) {
@@ -162,15 +169,15 @@ public class Sorts {
     /**
      * Outputs the elements of an array as a string
      *
-     * @param arr
+     * @param arr An array
      * @return Elements of array as a string
      */
     public static String printArrContents(int[] arr) {
 
         String message = "";
 
-        for (int i = 0; i < arr.length; i++) {
-            message += arr[i];
+        for (int i : arr) {
+            message += i;
         }
 
         return message;
@@ -179,7 +186,7 @@ public class Sorts {
     /**
      * Test case for differnet sorting algorithms
      *
-     * @param args
+     * @param args Arguments to be passed by the input stream
      */
     public static void main(String[] args) {
 
