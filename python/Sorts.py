@@ -27,8 +27,12 @@ def bubble(data):
 
 # runs merge sort and returns the sorted list
 def merge(data, start, end):
+
     if start == end:
-        singleElement = data[start]
+    
+        singleElement = [0]
+        singleElement[0] = data[start]
+    
         return singleElement
     
     mid = math.floor((start + end)/2)
@@ -44,12 +48,10 @@ def merge2Lists(arr1, arr2):
     pointer2 = 0
     pointerMerged = 0
 
-    mergedArray = []
-
-    print("test")
+    mergedArray = [0]*(len(arr1) + len(arr2))
 
     while pointer1 < len(arr1) and pointer2 < len(arr2):
-        
+
         if arr1[pointer1] > arr2[pointer2]:
             mergedArray[pointerMerged] = arr2[pointer2]
             pointer2 += 1
@@ -91,9 +93,11 @@ def arrayToString(arr):
         
 # runs the main code
 def main():
-    testData = [9,8,7,6,5,4,3,2,1]
     
+    testData = [9,8,7,6,5,4,3,2,1]
     print("Bubble Sort: " + arrayToString(bubble(testData)))
+    
+    testData = [9,8,7,6,5,4,3,2,1]
     print("Merge Sort: " + arrayToString(merge(testData, 0, len(testData) - 1)))
 
 main()
