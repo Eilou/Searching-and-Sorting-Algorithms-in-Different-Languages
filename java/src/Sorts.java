@@ -22,7 +22,7 @@ public class Sorts {
             boolean swapped = false;
 
             // intra-pass loops
-            for (int j = 1; j <= data.length - 1 - i; j++) {
+            for (int j = 1; j < data.length - i; j++) {
 
                 // swap if needed
                 if (data[j] < data[j - 1]) {
@@ -173,7 +173,7 @@ public class Sorts {
      * @param arr An array
      * @return Elements of array as a string
      */
-    public static String printArrContents(int[] arr) {
+    public static String arrayToString(int[] arr) {
 
         String message = "";
 
@@ -194,13 +194,13 @@ public class Sorts {
         int[] testData = {9, 8, 7, 6, 5, 4, 3, 2, 1};
 
         System.out.print("Bubble Sort: ");
-        System.out.println(Sorts.printArrContents(Sorts.bubble(testData)));
+        System.out.println(Sorts.arrayToString(Sorts.bubble(testData)));
         System.out.print("Merge Sort: ");
-        System.out.println(Sorts.printArrContents(Sorts.merge(testData, 0, testData.length - 1)));
+        System.out.println(Sorts.arrayToString(Sorts.merge(testData, 0, testData.length - 1)));
         System.out.print("Insertion Sort: ");
-        System.out.println(Sorts.printArrContents(Sorts.insertion(testData)));
+        System.out.println(Sorts.arrayToString(Sorts.insertion(testData)));
         System.out.print("Selection Sort: ");
-        System.out.println(Sorts.printArrContents(Sorts.selection(testData)));
+        System.out.println(Sorts.arrayToString(Sorts.selection(testData)));
 
     }
 }

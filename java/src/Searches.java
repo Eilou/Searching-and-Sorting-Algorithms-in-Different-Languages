@@ -67,8 +67,6 @@ public class Searches {
      */
     public static void main (String args[]) {
 
-
-
         int[] unSortedTestData = {0,9,1,8,2,7,3,6,4,5};
         int[] sortedTestData = {0,1,2,3,4,5,6,7,8,9};
 
