@@ -97,6 +97,7 @@ def main():
     testData = [9,8,7,6,5,4,3,2,1]
     print("Bubble Sort: " + arrayToString(bubble(testData)))
     
+    # have to redefine the array as the methods currently sort it
     testData = [9,8,7,6,5,4,3,2,1]
     print("Merge Sort: " + arrayToString(merge(testData, 0, len(testData) - 1)))
 
