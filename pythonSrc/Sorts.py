@@ -86,11 +86,29 @@ def insertion(data : list) -> list:
     return data
 
 # runs selection sort and returns the sorted list
+#
+# it segments the right half of the list as the sorted list then gradually swaps the largest elements
+# into the smallest positions of the sorted list such that it front fills and sorts the data
 def selection(data):
-    pass
+    for last_unsorted in range (len(data)-1, 0, -1):
+        largest_index = last_unsorted
+        
+        # find the largest item in the unsorted list
+        for i in range (last_unsorted):
+            if data[i] > data[largest_index]:
+                largest_index = i
+        
+        # swap the largest unsorted with the first element in the sorted section
+        if largest_index != last_unsorted:
+            temp = data[largest_index]
+            data[largest_index] = data[last_unsorted]
+            data[last_unsorted] = temp
+                
+    return data
+                
 
 # returns the elemetns of an array as a concanated string
-def arrayToString(arr):
+def array_to_string(arr):
     message = ""
 
     for i in arr:
@@ -100,12 +118,14 @@ def arrayToString(arr):
         
 # runs the main code
 testData = [9,8,7,6,5,4,3,2,1]
-print("Bubble Sort: " + arrayToString(bubble(testData)))
+print("Bubble Sort: " + array_to_string(bubble(testData)))
 
 # have to redefine the array as the methods currently sort it and treat lists as objects in python
 testData = [9,8,7,6,5,4,3,2,1]
-print("Merge Sort: " + arrayToString(merge(testData, 0, len(testData) - 1)))
+print("Merge Sort: " + array_to_string(merge(testData, 0, len(testData) - 1)))
 
-# have to redefine the array as the methods currently sort it and treat lists as objects in python
 testData = [9,8,7,6,5,4,3,2,1]
-print(f"Insertion Sort: {arrayToString(merge(testData, 0, len(testData) - 1))}")
+print(f"Insertion Sort: {array_to_string(insertion(testData))}")
+
+testData = [9,8,7,6,5,4,3,2,1]
+print(f"Selection Sort: {array_to_string(selection(testData))}")
