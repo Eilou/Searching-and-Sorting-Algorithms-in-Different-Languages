@@ -1,4 +1,4 @@
-package src;
+package javaSrc;
 
 /**
  * Java sorting algorithms
