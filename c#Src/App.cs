@@ -1,3 +1,5 @@
+// no need to put in a namespace then class because it is a top level file
+// hence no need to specify in the .csproj file where the entry point is
 using cSharpSrc; // treated like importing a package in java
 using System;
 
