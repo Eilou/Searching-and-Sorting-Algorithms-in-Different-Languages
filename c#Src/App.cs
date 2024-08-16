@@ -32,7 +32,9 @@ Console.WriteLine($"Binary search for item {testSearchItem2}: {Searches.Binary(s
 Console.WriteLine();
 
 Console.WriteLine($"Bubble sort result: {ArrayToString(Sorts.Bubble(unSortedTestData))}");
-unSortedTestData = new int[] { 0, 9, 1, 8, 2, 7, 3, 6, 4, 5 }; // could use [ ... ] but its only available in C#12 so trying to avoid
 
+unSortedTestData = new int[] { 0, 9, 1, 8, 2, 7, 3, 6, 4, 5 }; // could use [ ... ] but its only available in C#12 so trying to avoid
 Console.WriteLine($"Merge sort result: {ArrayToString(Sorts.Merge(unSortedTestData, 0, unSortedTestData.Length - 1))}");
+
 unSortedTestData = new int[] { 0, 9, 1, 8, 2, 7, 3, 6, 4, 5 };
+Console.WriteLine($"Insertion sort result: {ArrayToString(Sorts.Insertion(unSortedTestData))}");
