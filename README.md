@@ -4,4 +4,11 @@ Gradually updating, initially working on Java then going to write them for Pytho
 *Lanugages complete so far:*
 1. Java
 2. Python
-3. C# (in progress)
+3. C#
+
+*TODO:*
+- Learn in C++
+- Add HeapSort
+- Add DFS
+- Add BFS  
+- Learn in Rust
