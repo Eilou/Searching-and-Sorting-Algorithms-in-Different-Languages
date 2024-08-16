@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Net;
 using System.Runtime.Versioning;
 
 namespace cSharpSrc;
@@ -103,13 +104,35 @@ public class Sorts
         {
             int key = data[i];
             int j = i - 1;
-            
+
             while (j >= 0 && data[j] > key)
             {
-                data[j+1] = data[j];
+                data[j + 1] = data[j];
                 j--;
             }
-            data[j+1] = key;
+            data[j + 1] = key;
+        }
+
+        return data;
+    }
+
+    // Selection sort
+    public static int[] Selection(int[] data)
+    {
+
+        // work down from top to bottom to use i as the marker as where to swap the largest to
+        for (int i = data.Length - 1; i > 1; i--)
+        {
+            int positionOfLargest = i;
+
+            // find the largest in sub array data[0..i-1]
+            for (int j = i - 1; j > 0; j--)
+                if (data[j] > data[positionOfLargest])
+                    positionOfLargest = j;
+
+            // use a tuple to swap the values
+            (data[positionOfLargest], data[i]) = (data[i], data[positionOfLargest]);
+        
         }
 
         return data;

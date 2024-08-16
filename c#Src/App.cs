@@ -38,3 +38,6 @@ Console.WriteLine($"Merge sort result: {ArrayToString(Sorts.Merge(unSortedTestDa
 
 unSortedTestData = new int[] { 0, 9, 1, 8, 2, 7, 3, 6, 4, 5 };
 Console.WriteLine($"Insertion sort result: {ArrayToString(Sorts.Insertion(unSortedTestData))}");
+
+unSortedTestData = new int[] { 0, 9, 1, 8, 2, 7, 3, 6, 4, 5 };
+Console.WriteLine($"Selection sort result: {ArrayToString(Sorts.Selection(unSortedTestData))}");
